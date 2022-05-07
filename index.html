@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Formularz Zamówień</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;1,400;1,500&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <h1 class="text-center">Formularz zamówień</h1>
+    </div>
+</header>
+<section class="steps">
+    <div class="container">
+        <form action="" class="steps__form">
+            <div class="step" data-step="1">
+                <div class="step__header text-center">
+                    <h4>Krok 1 z 4</h4>
+                    <p>Wybierz gdzie chcesz umieścić grafikę na koszulce</p>
+                </div>
+
+            </div>
+            <div class="step" data-step="2">
+                <div class="step__header text-center">
+                    <h4>Krok 2 z 4</h4>
+                    <p>Wybierz grafikę, którą chcesz umieścić na koszulce</p>
+                </div>
+                <div class="step__buttons">
+                    <button class="btn btn--secondary step__buttons-prev"><</button>
+                    <button class="btn btn--primary step__buttons-random">wylosuj</button>
+                    <button class="btn btn--secondary step__buttons-next">></button>
+                </div>
+            </div>
+            <div class="step" data-step="3">
+                <div class="step__header text-center">
+                    <h4>Krok 3 z 4</h4>
+                    <p>Uzupełnij dane</p>
+                </div>
+                <input type="text" name="firstname" placeholder="Imię*" required>
+                <input type="text" name="secondname" placeholder="Nazwisko*" required>
+                <h4>Dane do rachunku</h4>
+                <input type="text" name="street" placeholder="ulica*" required>
+                <input type="text" name="buildinnumber" placeholder="numer budynku*" required>
+                <input type="text" name="flatnumber" placeholder="numer mieszkania">
+                <input type="text" name="postcode" placeholder="kod pocztowy*" required>
+                <input type="text" name="city" placeholder="miasto*" required>
+                <input type="text" name="phone" placeholder="telefon">
+                <input type="email" name="email" placeholder="adres mailowy*" required>
+                <input type="hidden" name="front" value="0">
+                <input type="hidden" name="back" value="0">
+            </div>
+            <div class="steps__choose">
+                <div data-id="front" class="step__front steps__choose-side">
+                    <img src="assets/img/front.jpg" class="step__shirt">
+                    <img src="" class="step__img step__img-front"/>
+                </div>
+                <div data-id="back" class="step__back steps__choose-side">
+                    <img src="assets/img/back.jpg" class="step__shirt">
+                    <img src="" class="step__img step__img-back"/>
+                </div>
+            </div>
+            <footer class="steps__footer">
+                <button class="btn btn--primary step__btn" >Przejdź dalej</button>
+            </footer>
+
+        </form>
+    </div>
+</section>
+<script src="assets/js/script.js"></script>
+</body>
+
+</html>
