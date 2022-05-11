@@ -19,6 +19,7 @@
 <section class="steps">
     <div class="container">
         <form action="" class="steps__form">
+
             <div class="step" data-step="1">
                 <div class="step__header text-center">
                     <h4>Krok 1 z 4</h4>
@@ -30,6 +31,7 @@
                 <div class="step__header text-center">
                     <h4>Krok 2 z 4</h4>
                     <p>Wybierz grafikę, którą chcesz umieścić na koszulce</p>
+
                 </div>
                 <div class="step__buttons">
                     <button class="btn btn--secondary step__buttons-prev"><</button>
@@ -42,31 +44,38 @@
                     <h4>Krok 3 z 4</h4>
                     <p>Uzupełnij dane</p>
                 </div>
-                <input type="text" name="firstname" placeholder="Imię*" required>
-                <input type="text" name="secondname" placeholder="Nazwisko*" required>
+                <input type="text" name="firstname" placeholder="Imię*" class="required">
+                <input type="text" name="secondname" placeholder="Nazwisko*" class="required">
                 <h4>Dane do rachunku</h4>
-                <input type="text" name="street" placeholder="ulica*" required>
-                <input type="text" name="buildinnumber" placeholder="numer budynku*" required>
+                <input type="text" name="street" placeholder="ulica*" class="required">
+                <input type="text" name="buildinnumber" placeholder="numer budynku*" class="required">
                 <input type="text" name="flatnumber" placeholder="numer mieszkania">
-                <input type="text" name="postcode" placeholder="kod pocztowy*" required>
-                <input type="text" name="city" placeholder="miasto*" required>
+                <input type="text" name="postcode" placeholder="kod pocztowy*" class="required">
+                <input type="text" name="city" placeholder="miasto*" class="required">
                 <input type="text" name="phone" placeholder="telefon">
-                <input type="email" name="email" placeholder="adres mailowy*" required>
+                <input type="email" name="email" placeholder="adres mailowy*" class="required">
                 <input type="hidden" name="front" value="0">
                 <input type="hidden" name="back" value="0">
+                <input type="hidden" name="price" id="price" value="0">
             </div>
             <div class="steps__choose">
-                <div data-id="front" class="step__front steps__choose-side">
+                <div data-id="front" data-price="10" class="step__front steps__choose-side">
                     <img src="assets/img/front.jpg" class="step__shirt">
                     <img src="" class="step__img step__img-front"/>
                 </div>
-                <div data-id="back" class="step__back steps__choose-side">
+                <div data-id="back" data-price="10" class="step__back steps__choose-side">
                     <img src="assets/img/back.jpg" class="step__shirt">
                     <img src="" class="step__img step__img-back"/>
                 </div>
             </div>
+            <p class="errors text-center"></p>
             <footer class="steps__footer">
-                <button class="btn btn--primary step__btn" >Przejdź dalej</button>
+
+                <button class="btn btn--secondary prev__step" disabled>wstecz</button>
+                <button class="btn btn--primary step__btn" >dalej</button>
+                <div class="price">
+                    <img src="assets/img/price.svg" alt="Cena"><span>0</span>
+                </div>
             </footer>
 
         </form>

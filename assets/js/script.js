@@ -21,6 +21,9 @@ class Form {
         this.frontImg = this.form.querySelector('.step__img-front');
         this.backImg = this.form.querySelector('.step__img-back');
         this.imgList = {};
+        this.error = this.form.querySelector('.errors');
+        this.btnPrev = this.form.querySelector('.prev__step');
+        this.btnPrev.addEventListener('click', this.goToPrevStep.bind(this));
     }
 
     prevImg(e) {
@@ -60,13 +63,22 @@ class Form {
     chooseSide(event) {
         const active = event.target,
             id = active.getAttribute('data-id'),
-            input = this.form.querySelector('input[name="' + id + '"]');
+            input = this.form.querySelector('input[name="' + id + '"]'),
+            priceEl = this.form.querySelector('.price span'),
+            elPrice = parseFloat(active.getAttribute('data-price')),
+            priceInput = this.form.querySelector('#price')
+        let price = parseFloat(priceInput.value);
         if (input.value == 0) {
+            price = price + elPrice;
             input.value = 1;
         } else {
+            price = price - elPrice;
             input.value = 0;
         }
+
         active.classList.toggle('active');
+        priceInput.value = price;
+        priceEl.innerText = price;
     }
 
     hideStep() {
@@ -76,21 +88,81 @@ class Form {
     }
 
     nextStep(e) {
-        this.hideStep();
         if (e) {
             e.preventDefault();
         }
+        if (this.current === 2) {
+            const valid = this.validateFirstStep();
 
-        this.btn.setAttribute('data-step', this.current);
-        this.form.querySelector('.step[data-step="' + this.current + '"]').classList.add('active');
-        if (this.current == 2) {
-           this.btn.innerText = 'Kup';
-        } else if (this.current == 3) {
-            console.log('123')
-            this.stepsChoose.classList.add('steps__choose-small');
+            if (valid) {
+                this.error.innerText = '';
+                this.goToNextStep();
+                this.stepsChoose.classList.add('disabled');
+                this.btnPrev.removeAttribute('disabled')
+            }
+        } else if (this.current === 3) {
+            this.goToNextStep();
+            this.btn.innerText = 'Kup';
+
+        } else if (this.current === 4) {
+            const valid = this.validateThirdStep();
+
+            if(valid) {
+                this.error.innerText = '';
+                this.goToNextStep();
+            }
         }
 
+    }
+
+    goToNextStep() {
+        this.hideStep();
+        this.btn.setAttribute('data-step', this.current);
+        this.form.querySelector('.step[data-step="' + this.current + '"]').classList.add('active');
         this.current++;
+    }
+
+    goToPrevStep(e) {
+        e.preventDefault();
+        let currentStep = this.form.querySelector('.step.active').getAttribute('data-step');
+        this.hideStep();
+        currentStep--;
+        if(currentStep === 1) {
+            this.btnPrev.setAttribute('disabled', 'true');
+            this.btn.setAttribute('data-step', currentStep);
+            this.form.querySelector('.step[data-step="' + currentStep + '"]').classList.add('active');
+            this.stepsChoose.classList.remove('disabled');
+        } else {
+            this.btn.setAttribute('data-step', currentStep);
+            this.form.querySelector('.step[data-step="' + currentStep + '"]').classList.add('active');
+        }
+        this.current--
+
+
+    }
+
+    validateFirstStep() {
+        let valid = true;
+        if (!this.form.querySelector('.steps__choose-side.active')) {
+            valid = false;
+            this.error.innerText = 'Nie wybrałeś gdzie chcesz umieścić grafikę!'
+        }
+        return valid;
+    }
+
+    validateThirdStep() {
+        let required = this.form.querySelectorAll('.required'),
+            valid = true;
+        required.forEach(function(i){
+            if(i.value == '') {
+                i.classList.add('error');
+                valid = false;
+            }
+            return valid;
+        })
+        console.log(valid);
+
+        return valid;
     }
 
 
@@ -105,8 +177,9 @@ class Form {
                 this.changeImg(this.random);
             })
 
-        this.nextStep();
+        this.goToNextStep();
     }
+
 }
 
 const form = new Form(document.querySelector('.steps__form'));
