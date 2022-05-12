@@ -52,6 +52,10 @@ p {
     font-size: 1.6rem;
     line-height: 2.4rem;
     margin-bottom: 2rem;
+    &.errors {
+        flex: 0 0 100%;
+        margin: 2rem 0;
+    }
 }
 
 h1,

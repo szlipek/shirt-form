@@ -217,7 +217,7 @@ class Form {
         this.hideStep();
         currentStep--;
         this.step.setAttribute('class', 'header__status-active step'+currentStep);
-        this.form.setAttribute('class', 'steps__form step'+currentStept);
+        this.form.setAttribute('class', 'steps__form step'+currentStep);
         if(currentStep === 1) {
             this.btnPrev.setAttribute('disabled', 'true');
             this.btn.setAttribute('data-step', currentStep);
