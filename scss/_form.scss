@@ -1,0 +1,42 @@
+input {
+    border: 1px solid $c-two;
+    transition: $transition;
+    flex: 0 0 calc(50% - 1rem);
+    width: calc(50% - 1rem);
+    border-radius: 2rem;
+    margin-bottom: 2rem;
+    height: 2.4rem;
+    line-height: 2.4rem;
+    font-family: $f-one;
+    font-size: 1.4rem;
+    box-sizing: border-box;
+    padding: 0 1.5rem;
+    @include breakpoint(phablet) {
+        flex: 0 0 100%;
+        width: 100%;
+        font-size: 1.2rem;
+        padding: 0 .8rem;
+        height: 2.2rem;
+        line-height: 2.2rem;
+    }
+    &:focus {
+        border-color: $c-one;
+        outline: none;
+    }
+    &.error {
+        border-color: $c-five;
+    }
+}
+
+.blur {
+    opacity: 0;
+    transition: $transition;
+    &.active {
+        opacity: 1;
+    }
+}
+input[type="range"] {
+    width: 100%;
+    max-width: 30rem;
+    margin: 0 auto;
+}

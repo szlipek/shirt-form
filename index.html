@@ -2,6 +2,7 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
     <title>Formularz Zamówień</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,25 +12,25 @@
 </head>
 <body>
 
-<header class="header">
-    <div class="container">
-        <h1 class="text-center">Formularz zamówień</h1>
-    </div>
-</header>
+
 <section class="steps">
     <div class="container">
+
         <form action="" class="steps__form">
+            <header class="header">
+                    <div class="header__status">
+                        <div class="header__status-active"></div>
+                    </div>
+            </header>
 
             <div class="step" data-step="1">
                 <div class="step__header text-center">
-                    <h4>Krok 1 z 4</h4>
                     <p>Wybierz gdzie chcesz umieścić grafikę na koszulce</p>
                 </div>
 
             </div>
             <div class="step" data-step="2">
                 <div class="step__header text-center">
-                    <h4>Krok 2 z 4</h4>
                     <p>Wybierz grafikę, którą chcesz umieścić na koszulce</p>
 
                 </div>
@@ -38,25 +39,105 @@
                     <button class="btn btn--primary step__buttons-random">wylosuj</button>
                     <button class="btn btn--secondary step__buttons-next">></button>
                 </div>
+                <div class="step__buttons">
+                    <button class="btn btn--secondary btn--normal active">Normalne</button>
+                    <button class="btn btn--secondary btn--greyscale">Greyscale</button>
+                    <button class="btn btn--secondary btn--blur">Blur</button>
+                </div>
+                <div class="step__buttons">
+                    <input type="range" name="blurRange" min="1" max="10" value="1" class="blur">
+                </div>
             </div>
             <div class="step" data-step="3">
                 <div class="step__header text-center">
-                    <h4>Krok 3 z 4</h4>
                     <p>Uzupełnij dane</p>
                 </div>
-                <input type="text" name="firstname" placeholder="Imię*" class="required">
-                <input type="text" name="secondname" placeholder="Nazwisko*" class="required">
-                <h4>Dane do rachunku</h4>
-                <input type="text" name="street" placeholder="ulica*" class="required">
-                <input type="text" name="buildinnumber" placeholder="numer budynku*" class="required">
-                <input type="text" name="flatnumber" placeholder="numer mieszkania">
-                <input type="text" name="postcode" placeholder="kod pocztowy*" class="required">
-                <input type="text" name="city" placeholder="miasto*" class="required">
-                <input type="text" name="phone" placeholder="telefon">
-                <input type="email" name="email" placeholder="adres mailowy*" class="required">
-                <input type="hidden" name="front" value="0">
-                <input type="hidden" name="back" value="0">
-                <input type="hidden" name="price" id="price" value="0">
+                <div class="step__form">
+                    <input type="text" name="firstname" placeholder="Imię*" class="required">
+                    <input type="text" name="secondname" placeholder="Nazwisko*" class="required">
+                    <p>Dane do rachunku</p>
+                    <input type="text" name="street" placeholder="ulica*" class="required">
+                    <input type="text" name="buildinnumber" placeholder="numer budynku*" class="required">
+                    <input type="text" name="flatnumber" placeholder="numer mieszkania">
+                    <input type="text" name="postcode" placeholder="kod pocztowy*" class="required">
+                    <input type="text" name="city" placeholder="miasto*" class="required">
+                    <input type="text" name="phone" placeholder="telefon">
+                    <input type="text" name="email" placeholder="adres mailowy*" class="required">
+                    <input type="hidden" name="front" value="0">
+                    <input type="hidden" name="back" value="0">
+                    <input type="hidden" name="price" id="price" value="0">
+                </div>
+
+            </div>
+            <div class="step" data-step="4">
+                <div class="step__header text-center">
+                    <p>Podsumowanie zamówienia</p>
+                </div>
+                <div class="row">
+                    <h3 class="end">Koszulka z nadrukiem: <span></span></h3>
+                    <div class="col">
+                        <p><strong>Imię</strong></p>
+                    </div>
+                    <div class="col">
+                        <p class="firstname"></p>
+                    </div>
+                    <div class="col">
+                        <p><strong>Nazwisko</strong></p>
+                    </div>
+                    <div class="col">
+                        <p class="secondname"></p>
+                    </div>
+                    <div class="col">
+                        <p><strong>Ulica</strong></p>
+                    </div>
+                    <div class="col">
+                        <p class="street"></p>
+                    </div>
+                    <div class="col">
+                        <p><strong>Numer budynku</strong></p>
+                    </div>
+                    <div class="col">
+                        <p class="buildinnumber"></p>
+                    </div>
+                    <div class="col">
+                        <p><strong>Numer mieszkania</strong></p>
+                    </div>
+                    <div class="col">
+                        <p class="flatnumber"></p>
+                    </div>
+                    <div class="col">
+                        <p><strong>Kod pocztowy</strong></p>
+                    </div>
+                    <div class="col">
+                        <p class="postcode"></p>
+                    </div>
+                    <div class="col">
+                        <p><strong>Miasto</strong></p>
+                    </div>
+                    <div class="col">
+                        <p class="city"></p>
+                    </div>
+                    <div class="col">
+                        <p><strong>Telefon</strong></p>
+                    </div>
+                    <div class="col">
+                        <p class="phone"></p>
+                    </div>
+                    <div class="col">
+                        <p><strong>Adres e-mail</strong></p>
+                    </div>
+                    <div class="col">
+                        <p class="email"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="step" data-step="5">
+                <div class="step__header text-center">
+                    <h4>Dziękujemy za zakup</h4>
+                    <p>Dziękujemy za dokonanie zamówienia oto dane Twojego zamówienia</p>
+                </div>
+                <h3 class="text-center">Twoje zamówienie trafiło do naszego magazynu.</h3>
+
             </div>
             <div class="steps__choose">
                 <div data-id="front" data-price="10" class="step__front steps__choose-side">
@@ -72,7 +153,7 @@
             <footer class="steps__footer">
 
                 <button class="btn btn--secondary prev__step" disabled>wstecz</button>
-                <button class="btn btn--primary step__btn" >dalej</button>
+                <button class="btn btn--primary step__btn">dalej</button>
                 <div class="price">
                     <img src="assets/img/price.svg" alt="Cena"><span>0</span>
                 </div>

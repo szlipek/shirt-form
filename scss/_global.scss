@@ -10,6 +10,9 @@ body {
     margin: 0 auto;
     padding: 0 3rem;
     box-sizing: border-box;
+    @include breakpoint(phablet) {
+        padding: 0 1.5rem;
+    }
 }
 
 .btn {
@@ -19,18 +22,38 @@ body {
     border: none;
     cursor: pointer;
     transition: $transition;
+    border-radius: 3rem;
+    @include breakpoint(tablet) {
+        font-size: 1.3rem;
+        padding: .2rem 1rem;
+    }
     &--primary {
         background: $c-one;
-        color: $c-two;
+        color: $c-three;
         &:hover {
-            background: $c-two;
-            color: $c-one;
+            background: $c-one-hover;
         }
+    }
+    &--secondary {
+        border: 1px solid $c-one;
+        color: $c-one;
+        &:hover {
+            border-color: $c-one-hover;
+            color: $c-one-hover;
+        }
+        &.active {
+            background: $c-one;
+            color: $c-three;
+        }
+    }
+    &:disabled {
+        opacity: .2;
+        cursor: not-allowed;
     }
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 .errors {

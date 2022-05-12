@@ -1,8 +1,55 @@
 .steps {
     .step {
         display: none;
+        flex: 0 0 60%;
+        transition: $transition;
+        max-width: 60%;
+        @include breakpoint(smallDesktop) {
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+        @include breakpoint(tablet) {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
         &.active {
             display: block;
+        }
+        
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            .col {
+                flex: 0 0 50%;
+                box-sizing: border-box;
+                padding: 0 .5rem;
+                @include breakpoint(phablet) {
+                    padding: 0 .1rem;
+                }
+                &:nth-child(odd) {
+                    text-align: left;
+                }
+                &:nth-child(even) {
+                    text-align: right;
+                }
+                p {
+                    color: $c-four;
+                    margin-bottom: 0;
+                    @include breakpoint(phablet) {
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+        }
+
+        &__form {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            p {
+                flex: 0 0 100%;
+            }
         }
 
         &__shirt {
@@ -24,6 +71,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-wrap: wrap;
+            .btn {
+                margin-bottom: 1rem;
+            }
         }
     }
     &__choose {
@@ -33,6 +84,15 @@
         max-width: 43rem;
         margin: 3rem auto 0;
         transition: $transition;
+        flex: 0 0 40%;
+        @include breakpoint(smallDesktop) {
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+        @include breakpoint(tablet) {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
         &.disabled {
             pointer-events: none;
         }
@@ -43,15 +103,21 @@
             }
         }
         &-side {
-            border: 2px solid $c-one;
+            border: 2px solid $c-three;
             padding: 2rem;
             box-sizing: border-box;
             position: relative;
             transition: $transition;
             cursor: pointer;
             margin: 0 1rem;
+            @include breakpoint(smallDesktop) {
+                padding: 1rem;
+            }
+            @include breakpoint(tablet) {
+                padding: .3rem;
+            }
             &.active {
-                border-color: $c-three;
+                border-color: $c-one;
                 .step__img {
                     opacity: 1;
                 }
@@ -65,8 +131,26 @@
         padding: 3rem 0;
         display: flex;
         justify-content: center;
+        flex: 0 0 100%;
+        transition: $transition;
+        @include breakpoint(tablet) {
+            flex-wrap: wrap;
+        }
         .btn {
-            margin: 0 1rem;
+            margin: 0 1rem 1rem;
+        }
+    }
+    &__form {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        &.step5 {
+            padding: 3rem 0;
+            .step {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+
         }
     }
 }
