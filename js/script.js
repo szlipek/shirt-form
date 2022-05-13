@@ -7,30 +7,19 @@ class Form {
         this.current = 1;
         this.front = this.form.querySelector('.step__front');
         this.back = this.form.querySelector('.step__back');
-        this.front.addEventListener('click', this.chooseSide.bind(this));
-        this.back.addEventListener('click', this.chooseSide.bind(this));
-        this.btn.addEventListener('click', this.nextStep.bind(this));
         this.stepsChoose = this.form.querySelector('.steps__choose');
         this.prevBtn = this.form.querySelector('.step__buttons-prev');
         this.nextBtn = this.form.querySelector('.step__buttons-next');
         this.randomBtn = this.form.querySelector('.step__buttons-random');
-        this.prevBtn.addEventListener('click', this.prevImg.bind(this));
-        this.nextBtn.addEventListener('click', this.nextImg.bind(this));
-        this.randomBtn.addEventListener('click', this.randomImg.bind(this));
         this.frontImg = this.form.querySelector('.step__img-front');
         this.backImg = this.form.querySelector('.step__img-back');
         this.imgList = {};
         this.error = this.form.querySelector('.errors');
         this.btnPrev = this.form.querySelector('.prev__step');
-        this.btnPrev.addEventListener('click', this.goToPrevStep.bind(this));
         this.btnNormal = this.form.querySelector('.btn--normal');
         this.btnGreyscale = this.form.querySelector('.btn--greyscale');
         this.btnBlur = this.form.querySelector('.btn--blur');
-        this.btnGreyscale.addEventListener('click', this.setImage.bind(this));
-        this.btnNormal.addEventListener('click', this.setNormal.bind(this));
-        this.btnBlur.addEventListener('click', this.setBlur.bind(this));
         this.blur = this.form.querySelector('.blur');
-        this.blur.addEventListener('change', this.setImage.bind(this));
         this.step = this.form.querySelector('.header__status-active');
     }
 
@@ -69,15 +58,14 @@ class Form {
         this.blur.classList.add('active');
     }
 
-
     setImage(e) {
         e.preventDefault();
         const priceInput = this.form.querySelector('#price'),
             priceEl = this.form.querySelector('.price span');
         let price = 0;
         const shirtPrice = this.form.querySelectorAll('.steps__choose-side');
-        shirtPrice.forEach(function(e) {
-            if(e.classList.contains('active') ) {
+        shirtPrice.forEach((i) => {
+            if(i.classList.contains('active') ) {
                 price = price + 10;
             }
         })
@@ -132,7 +120,6 @@ class Form {
         this.changeImg(this.random);
     }
 
-
     changeImg(i) {
         const imgId = this.imgList[i]['id'];
         const imgUrl = 'https://picsum.photos/id/' + imgId + '/80';
@@ -156,7 +143,6 @@ class Form {
             price = price - elPrice;
             input.value = 0;
         }
-
         active.classList.toggle('active');
         priceInput.value = price;
         priceEl.innerText = price;
@@ -184,8 +170,6 @@ class Form {
         } else if (this.current === 3) {
             this.goToNextStep();
             this.btn.innerText = 'Kup';
-
-
         } else if (this.current === 4) {
             const valid = this.validateThirdStep();
 
@@ -197,7 +181,6 @@ class Form {
         } else if (this.current === 5) {
             this.goToNextStep();
             this.sendForm();
-
         }
 
     }
@@ -243,14 +226,13 @@ class Form {
             form.querySelector('.end').innerHTML += 'z przodu'
         }
 
-        inputs.forEach(function(i){
+        inputs.forEach((i) => {
             const val = i.value,
                 name = '.'+i.getAttribute('name');
             form.querySelector(name).innerText = val;
         })
         this.btn.innerText = 'Złóż zamówienie';
     }
-
 
     validateFirstStep() {
         let valid = true;
@@ -264,7 +246,7 @@ class Form {
     validateThirdStep() {
         let required = this.form.querySelectorAll('.required'),
             valid = true;
-        required.forEach(function(i){
+        required.forEach((i) => {
             if(i.value == '') {
                 i.classList.add('error');
                 valid = false;
@@ -278,7 +260,7 @@ class Form {
         let formData = {};
 
         const inputs = this.form.querySelectorAll('input');
-        inputs.forEach(function(i) {
+        inputs.forEach((i) => {
             const name = i.getAttribute('name'),
                 val = i.value;
             formData[name] = val;
@@ -287,6 +269,20 @@ class Form {
         this.stepsChoose.classList.add('hidden');
         this.form.querySelector('.header').classList.add('hidden');
         console.log(formData);
+    }
+
+    run() {
+        this.front.addEventListener('click', this.chooseSide.bind(this));
+        this.back.addEventListener('click', this.chooseSide.bind(this));
+        this.btn.addEventListener('click', this.nextStep.bind(this));
+        this.prevBtn.addEventListener('click', this.prevImg.bind(this));
+        this.nextBtn.addEventListener('click', this.nextImg.bind(this));
+        this.randomBtn.addEventListener('click', this.randomImg.bind(this));
+        this.btnPrev.addEventListener('click', this.goToPrevStep.bind(this));
+        this.btnGreyscale.addEventListener('click', this.setImage.bind(this));
+        this.btnNormal.addEventListener('click', this.setNormal.bind(this));
+        this.btnBlur.addEventListener('click', this.setBlur.bind(this));
+        this.blur.addEventListener('change', this.setImage.bind(this));
     }
 
     initForm() {
@@ -301,6 +297,7 @@ class Form {
             })
 
         this.goToNextStep();
+        this.run();
     }
 
 }
